@@ -3,6 +3,9 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+from compiler.errors import CompilerError
+from compiler.lexer import tokenize
+
 
 def main() -> int:
     if len(sys.argv) != 2:
@@ -17,11 +20,14 @@ def main() -> int:
 
     source_code = source_path.read_text(encoding="utf-8")
 
-    print("Compilador iniciado.")
-    print(f"Arquivo: {source_path}")
-    print(f"Tamanho: {len(source_code)} caracteres")
-    print()
-    print("As fases do compilador ainda serao implementadas.")
+    try:
+        tokens = tokenize(source_code)
+    except CompilerError as error:
+        print(error)
+        return 1
+
+    for token in tokens:
+        print(f"{token.line}:{token.column} {token.type.value} {token.lexeme}")
 
     return 0
 

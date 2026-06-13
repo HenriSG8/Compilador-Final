@@ -7,6 +7,7 @@ Este documento descreve a linguagem usada no compilador do projeto. A sintaxe fo
 - Linguagem imperativa simples.
 - Tipagem estatica.
 - Tipos suportados: `int` e `bool`.
+- Literais suportados: numeros inteiros, booleanos e strings.
 - Comandos suportados: declaracao, atribuicao, `if/else`, `while`, `print` e `read`.
 - Codigo final planejado: Assembly MIPS.
 
@@ -64,6 +65,14 @@ bool ativo;
 ativo = true;
 ```
 
+### String
+
+Strings podem aparecer como literais, principalmente no comando `print`. Elas nao sao usadas como tipo de variavel nesta versao da linguagem.
+
+```c
+print("resultado");
+```
+
 ## Declaracao de Variaveis
 
 Toda variavel deve ser declarada antes de ser usada.
@@ -95,6 +104,7 @@ O comando `print` imprime o valor de uma expressao.
 ```c
 print(x);
 print(10);
+print("fim");
 ```
 
 ## Estruturas de Controle
@@ -204,6 +214,7 @@ unario        -> ("!" | "-") unario
               | primario
 
 primario      -> NUMERO
+              | STRING
               | "true"
               | "false"
               | IDENTIFICADOR
