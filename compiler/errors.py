@@ -14,3 +14,8 @@ class ParserError(CompilerError):
         super().__init__(f"Erro sintatico na linha {line}, coluna {column}: {message}")
         self.line = line
         self.column = column
+
+
+class SemanticError(CompilerError):
+    def __init__(self, message: str) -> None:
+        super().__init__(f"Erro semantico: {message}")
