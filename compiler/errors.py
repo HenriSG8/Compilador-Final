@@ -7,3 +7,10 @@ class LexicalError(CompilerError):
         super().__init__(f"Erro lexico na linha {line}, coluna {column}: {message}")
         self.line = line
         self.column = column
+
+
+class ParserError(CompilerError):
+    def __init__(self, message: str, line: int, column: int) -> None:
+        super().__init__(f"Erro sintatico na linha {line}, coluna {column}: {message}")
+        self.line = line
+        self.column = column

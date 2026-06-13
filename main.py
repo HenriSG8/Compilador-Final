@@ -5,6 +5,7 @@ from pathlib import Path
 
 from compiler.errors import CompilerError
 from compiler.lexer import tokenize
+from compiler.parser import parse
 
 
 def main() -> int:
@@ -22,12 +23,13 @@ def main() -> int:
 
     try:
         tokens = tokenize(source_code)
+        program = parse(tokens)
     except CompilerError as error:
         print(error)
         return 1
 
-    for token in tokens:
-        print(f"{token.line}:{token.column} {token.type.value} {token.lexeme}")
+    print("Analise sintatica concluida com sucesso.")
+    print(f"Declaracoes encontradas: {len(program.declarations)}")
 
     return 0
 
