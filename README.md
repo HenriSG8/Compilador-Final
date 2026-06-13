@@ -4,9 +4,9 @@ Projeto de um compilador simples feito em Python para uma linguagem parecida com
 
 O compilador sera dividido nas seguintes etapas:
 
-1. Analise lexica.
-2. Analise sintatica e AST.
-3. Analise semantica.
+1. Analise lexica. Feita.
+2. Analise sintatica e AST. Feita.
+3. Analise semantica. Feita.
 4. Geracao de codigo intermediario.
 5. Geracao de Assembly MIPS.
 
@@ -16,7 +16,7 @@ O compilador sera dividido nas seguintes etapas:
 python main.py exemplos/exemplo_basico.hc
 ```
 
-No momento o projeto esta apenas com a estrutura inicial. As fases do compilador serao implementadas aos poucos.
+No momento o projeto executa as analises lexica, sintatica e semantica.
 
 ## Estrutura
 
@@ -33,4 +33,5 @@ exemplos/
   exemplo_basico.hc
 docs/
   linguagem.md
+  semantica.md
 ```

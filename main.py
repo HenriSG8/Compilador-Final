@@ -6,6 +6,7 @@ from pathlib import Path
 from compiler.errors import CompilerError
 from compiler.lexer import tokenize
 from compiler.parser import parse
+from compiler.semantic import analyze
 
 
 def main() -> int:
@@ -24,11 +25,12 @@ def main() -> int:
     try:
         tokens = tokenize(source_code)
         program = parse(tokens)
+        analyze(program)
     except CompilerError as error:
         print(error)
         return 1
 
-    print("Analise sintatica concluida com sucesso.")
+    print("Analises lexica, sintatica e semantica concluidas com sucesso.")
     print(f"Declaracoes encontradas: {len(program.declarations)}")
 
     return 0
