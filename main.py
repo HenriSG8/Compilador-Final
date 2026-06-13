@@ -6,6 +6,7 @@ from pathlib import Path
 from compiler.errors import CompilerError
 from compiler.ir import generate_ir
 from compiler.lexer import tokenize
+from compiler.mips import generate_mips
 from compiler.parser import parse
 from compiler.semantic import analyze
 
@@ -28,6 +29,7 @@ def main() -> int:
         program = parse(tokens)
         analyze(program)
         instructions = generate_ir(program)
+        mips_code = generate_mips(instructions)
     except CompilerError as error:
         print(error)
         return 1
@@ -39,6 +41,10 @@ def main() -> int:
 
     for instruction in instructions:
         print(instruction)
+
+    print()
+    print("Assembly MIPS:")
+    print(mips_code)
 
     return 0
 
