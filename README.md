@@ -7,7 +7,7 @@ O compilador sera dividido nas seguintes etapas:
 1. Analise lexica. Feita.
 2. Analise sintatica e AST. Feita.
 3. Analise semantica. Feita.
-4. Geracao de codigo intermediario.
+4. Geracao de codigo intermediario. Feita.
 5. Geracao de Assembly MIPS.
 
 ## Como Executar
@@ -16,7 +16,7 @@ O compilador sera dividido nas seguintes etapas:
 python main.py exemplos/exemplo_basico.hc
 ```
 
-No momento o projeto executa as analises lexica, sintatica e semantica.
+No momento o projeto executa as analises lexica, sintatica e semantica, alem de gerar codigo intermediario.
 
 ## Estrutura
 
@@ -34,4 +34,5 @@ exemplos/
 docs/
   linguagem.md
   semantica.md
+  codigo-intermediario.md
 ```

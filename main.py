@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from compiler.errors import CompilerError
+from compiler.ir import generate_ir
 from compiler.lexer import tokenize
 from compiler.parser import parse
 from compiler.semantic import analyze
@@ -26,12 +27,18 @@ def main() -> int:
         tokens = tokenize(source_code)
         program = parse(tokens)
         analyze(program)
+        instructions = generate_ir(program)
     except CompilerError as error:
         print(error)
         return 1
 
     print("Analises lexica, sintatica e semantica concluidas com sucesso.")
     print(f"Declaracoes encontradas: {len(program.declarations)}")
+    print()
+    print("Codigo intermediario:")
+
+    for instruction in instructions:
+        print(instruction)
 
     return 0
 
