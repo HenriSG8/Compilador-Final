@@ -13,11 +13,12 @@ from compiler.semantic import analyze
 
 
 def main() -> int:
-    if len(sys.argv) != 2:
-        print("Uso: python main.py <arquivo-fonte>")
+    if len(sys.argv) not in (2, 3):
+        print("Uso: python main.py <arquivo-fonte> [saida.asm]")
         return 1
 
     source_path = Path(sys.argv[1])
+    output_path = Path(sys.argv[2]) if len(sys.argv) == 3 else None
 
     if not source_path.exists():
         print(f"Arquivo nao encontrado: {source_path}")
@@ -47,6 +48,11 @@ def main() -> int:
     print()
     print("Assembly MIPS:")
     print(mips_code)
+
+    if output_path is not None:
+        output_path.write_text(mips_code, encoding="utf-8")
+        print()
+        print(f"Assembly salvo em: {output_path}")
 
     return 0
 

@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import subprocess
+import sys
 from pathlib import Path
 
 from compiler.errors import CompilerError
@@ -57,6 +59,31 @@ def test_constant_folding() -> None:
     assert "print 1" not in text
 
 
+def test_output_file() -> None:
+    output_path = ROOT / "saida_teste.asm"
+
+    if output_path.exists():
+        output_path.unlink()
+
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "main.py"),
+            str(ROOT / "exemplos" / "strings.hc"),
+            str(output_path),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert output_path.exists()
+    assert ".text" in output_path.read_text(encoding="utf-8")
+
+    output_path.unlink()
+
+
 def main() -> int:
     assert_valid("exemplos/exemplo_basico.hc")
     assert_valid("exemplos/strings.hc")
@@ -67,6 +94,7 @@ def main() -> int:
     assert_invalid("exemplos/erros/sintaxe_sem_ponto_virgula.hc", "esperado ';'")
 
     test_constant_folding()
+    test_output_file()
 
     print("Todos os testes passaram.")
     return 0
