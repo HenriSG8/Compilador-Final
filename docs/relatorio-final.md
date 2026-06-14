@@ -99,7 +99,8 @@ A analise semantica verifica regras que nao dependem apenas da forma do programa
 Foram implementadas as seguintes verificacoes:
 
 - variavel precisa ser declarada antes do uso;
-- nao pode haver variavel repetida no mesmo escopo;
+- nao pode haver variavel repetida em escopos visiveis;
+- nomes internos usados pelo compilador sao reservados;
 - atribuicoes precisam respeitar o tipo declarado;
 - condicoes de `if` e `while` precisam ser booleanas;
 - operadores aritmeticos trabalham com `int`;

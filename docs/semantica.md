@@ -5,7 +5,8 @@ A analise semantica verifica se o programa faz sentido depois de passar pela ana
 Nesta etapa foram implementadas as seguintes verificacoes:
 
 - variavel precisa ser declarada antes do uso;
-- nao pode haver duas variaveis com o mesmo nome no mesmo escopo;
+- nao pode haver duas variaveis com o mesmo nome em escopos visiveis;
+- nomes internos usados pelo compilador, como `t1`, `L1`, `str_1`, `newline` e `main`, nao podem ser usados como variaveis;
 - atribuicoes devem respeitar o tipo declarado da variavel;
 - condicoes de `if` e `while` devem ser do tipo `bool`;
 - operadores aritmeticos aceitam apenas valores `int`;
