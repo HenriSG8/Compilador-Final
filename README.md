@@ -9,6 +9,7 @@ O compilador sera dividido nas seguintes etapas:
 3. Analise semantica. Feita.
 4. Geracao de codigo intermediario. Feita.
 5. Geracao de Assembly MIPS. Feita.
+6. Otimizacao simples. Feita.
 
 ## Como Executar
 
@@ -16,7 +17,7 @@ O compilador sera dividido nas seguintes etapas:
 python main.py exemplos/exemplo_basico.hc
 ```
 
-No momento o projeto executa as analises lexica, sintatica e semantica, gera codigo intermediario e traduz para Assembly MIPS.
+No momento o projeto executa as analises lexica, sintatica e semantica, aplica otimizacoes simples, gera codigo intermediario e traduz para Assembly MIPS.
 
 ## Estrutura
 
@@ -26,6 +27,7 @@ compiler/
   parser.py      analise sintatica
   ast_nodes.py   nos da AST
   semantic.py    analise semantica
+  optimizer.py   otimizacao simples da AST
   ir.py          codigo intermediario
   mips.py        geracao de Assembly MIPS
   errors.py      erros do compilador
@@ -36,4 +38,5 @@ docs/
   semantica.md
   codigo-intermediario.md
   mips.md
+  otimizacao.md
 ```

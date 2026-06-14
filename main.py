@@ -7,6 +7,7 @@ from compiler.errors import CompilerError
 from compiler.ir import generate_ir
 from compiler.lexer import tokenize
 from compiler.mips import generate_mips
+from compiler.optimizer import optimize
 from compiler.parser import parse
 from compiler.semantic import analyze
 
@@ -28,6 +29,7 @@ def main() -> int:
         tokens = tokenize(source_code)
         program = parse(tokens)
         analyze(program)
+        program = optimize(program)
         instructions = generate_ir(program)
         mips_code = generate_mips(instructions)
     except CompilerError as error:
