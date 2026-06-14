@@ -17,6 +17,12 @@ O compilador sera dividido nas seguintes etapas:
 python main.py exemplos/exemplo_basico.hc
 ```
 
+Para salvar o Assembly MIPS em um arquivo:
+
+```bash
+python main.py exemplos/exemplo_basico.hc saida.asm
+```
+
 Para rodar os testes:
 
 ```bash
