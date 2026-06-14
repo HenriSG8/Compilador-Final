@@ -17,6 +17,12 @@ O compilador sera dividido nas seguintes etapas:
 python main.py exemplos/exemplo_basico.hc
 ```
 
+Para rodar os testes:
+
+```bash
+python tests/run_tests.py
+```
+
 No momento o projeto executa as analises lexica, sintatica e semantica, aplica otimizacoes simples, gera codigo intermediario e traduz para Assembly MIPS.
 
 ## Estrutura
@@ -33,10 +39,15 @@ compiler/
   errors.py      erros do compilador
 exemplos/
   exemplo_basico.hc
+  strings.hc
+  otimizacao.hc
+tests/
+  run_tests.py
 docs/
   linguagem.md
   semantica.md
   codigo-intermediario.md
   mips.md
   otimizacao.md
+  testes.md
 ```
