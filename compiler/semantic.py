@@ -17,6 +17,22 @@ from compiler.ast_nodes import (
 from compiler.errors import SemanticError
 
 
+RESERVED_INTERNAL_NAMES = {"main", "newline"}
+
+
+def is_internal_name(name: str) -> bool:
+    if name in RESERVED_INTERNAL_NAMES:
+        return True
+
+    if len(name) > 1 and name[1:].isdigit() and name[0] in {"t", "L"}:
+        return True
+
+    if name.startswith("str_") and name[4:].isdigit():
+        return True
+
+    return False
+
+
 class SymbolTable:
     def __init__(self) -> None:
         self.scopes: list[dict[str, str]] = [{}]
@@ -28,10 +44,14 @@ class SymbolTable:
         self.scopes.pop()
 
     def define(self, name: str, var_type: str) -> None:
+        if is_internal_name(name):
+            raise SemanticError(f"nome '{name}' e reservado pelo compilador")
+
         current_scope = self.scopes[-1]
 
-        if name in current_scope:
-            raise SemanticError(f"variavel '{name}' ja foi declarada neste escopo")
+        for scope in reversed(self.scopes):
+            if name in scope:
+                raise SemanticError(f"variavel '{name}' ja foi declarada")
 
         current_scope[name] = var_type
 

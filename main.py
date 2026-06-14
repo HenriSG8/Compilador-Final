@@ -50,7 +50,13 @@ def main() -> int:
     print(mips_code)
 
     if output_path is not None:
-        output_path.write_text(mips_code, encoding="utf-8")
+        try:
+            output_path.write_text(mips_code, encoding="utf-8")
+        except OSError as error:
+            print()
+            print(f"Nao foi possivel salvar o Assembly: {error}")
+            return 1
+
         print()
         print(f"Assembly salvo em: {output_path}")
 

@@ -84,6 +84,23 @@ def test_output_file() -> None:
     output_path.unlink()
 
 
+def test_invalid_output_file() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "main.py"),
+            str(ROOT / "exemplos" / "strings.hc"),
+            str(ROOT / "pasta_inexistente" / "saida.asm"),
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 1
+    assert "Nao foi possivel salvar" in result.stdout
+
+
 def main() -> int:
     assert_valid("exemplos/exemplo_basico.hc")
     assert_valid("exemplos/strings.hc")
@@ -92,9 +109,12 @@ def main() -> int:
     assert_invalid("exemplos/erros/variavel_nao_declarada.hc", "nao foi declarada")
     assert_invalid("exemplos/erros/tipo_incorreto.hc", "recebeu bool")
     assert_invalid("exemplos/erros/sintaxe_sem_ponto_virgula.hc", "esperado ';'")
+    assert_invalid("exemplos/erros/variavel_redeclarada_bloco.hc", "ja foi declarada")
+    assert_invalid("exemplos/erros/nome_reservado_interno.hc", "reservado")
 
     test_constant_folding()
     test_output_file()
+    test_invalid_output_file()
 
     print("Todos os testes passaram.")
     return 0
