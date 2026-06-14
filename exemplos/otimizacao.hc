@@ -1,0 +1,13 @@
+int x;
+
+x = 2 + 3 * 4;
+
+if (true) {
+    print(x);
+} else {
+    print(0);
+}
+
+while (false) {
+    print(1);
+}
