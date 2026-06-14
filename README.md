@@ -29,6 +29,12 @@ Para rodar os testes:
 python tests/run_tests.py
 ```
 
+O relatorio final esta em:
+
+```text
+docs/relatorio-final.md
+```
+
 No momento o projeto executa as analises lexica, sintatica e semantica, aplica otimizacoes simples, gera codigo intermediario e traduz para Assembly MIPS.
 
 ## Estrutura
@@ -56,4 +62,5 @@ docs/
   mips.md
   otimizacao.md
   testes.md
+  relatorio-final.md
 ```
