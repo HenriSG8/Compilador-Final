@@ -33,6 +33,7 @@ O relatorio final esta em:
 
 ```text
 docs/relatorio-final.md
+docs/relatorio-final.pdf
 ```
 
 No momento o projeto executa as analises lexica, sintatica e semantica, aplica otimizacoes simples, gera codigo intermediario e traduz para Assembly MIPS.
@@ -56,11 +57,7 @@ exemplos/
 tests/
   run_tests.py
 docs/
-  linguagem.md
-  semantica.md
-  codigo-intermediario.md
-  mips.md
-  otimizacao.md
   testes.md
   relatorio-final.md
+  relatorio-final.pdf
 ```
