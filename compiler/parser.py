@@ -24,6 +24,7 @@ class Parser:
         self.current = 0
 
     def parse(self) -> Program:
+        # O programa e uma sequencia de declaracoes e comandos ate EOF.
         declarations = []
 
         while not self._is_at_end():
@@ -32,6 +33,7 @@ class Parser:
         return Program(declarations)
 
     def _declaration(self):
+        # Declaracao com tipo comeca por int/bool; o restante e comando.
         if self._match(TokenType.INT, TokenType.BOOL):
             return self._var_declaration(self._previous())
 
@@ -43,6 +45,7 @@ class Parser:
         return VarDeclaration(type_token.lexeme, name.lexeme)
 
     def _statement(self):
+        # Cada alternativa reconhece uma forma de comando da linguagem.
         if self._match(TokenType.IF):
             return self._if_statement()
 
@@ -93,6 +96,7 @@ class Parser:
     def _block(self) -> list:
         declarations = []
 
+        # Blocos criam uma lista propria de declaracoes ate encontrar '}'.
         while not self._check(TokenType.RIGHT_BRACE) and not self._is_at_end():
             declarations.append(self._declaration())
 
@@ -106,6 +110,7 @@ class Parser:
         return Assignment(name.lexeme, value)
 
     def _expression(self):
+        # A cadeia abaixo implementa precedencia: ||, &&, comparacoes, soma, produto.
         return self._or()
 
     def _or(self):
@@ -198,6 +203,7 @@ class Parser:
             return Variable(self._previous().lexeme)
 
         if self._match(TokenType.READ):
+            # read() e tratado como expressao inteira, por isso pode aparecer em atribuicao.
             self._consume(TokenType.LEFT_PAREN, "esperado '(' depois de read")
             self._consume(TokenType.RIGHT_PAREN, "esperado ')' depois de read")
             return ReadExpression()
@@ -219,6 +225,7 @@ class Parser:
         return False
 
     def _consume(self, token_type: TokenType, message: str) -> Token:
+        # Consome o token esperado ou gera erro sintatico com posicao.
         if self._check(token_type):
             return self._advance()
 

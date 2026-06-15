@@ -7,6 +7,7 @@ from compiler.errors import LexicalError
 
 
 class TokenType(Enum):
+    # Palavras reservadas da linguagem.
     INT = "INT"
     BOOL = "BOOL"
     TRUE = "TRUE"
@@ -17,10 +18,12 @@ class TokenType(Enum):
     PRINT = "PRINT"
     READ = "READ"
 
+    # Valores escritos pelo usuario no codigo fonte.
     IDENTIFIER = "IDENTIFIER"
     NUMBER = "NUMBER"
     STRING = "STRING"
 
+    # Operadores aritmeticos.
     PLUS = "PLUS"
     MINUS = "MINUS"
     STAR = "STAR"
@@ -38,6 +41,7 @@ class TokenType(Enum):
     OR = "OR"
     NOT = "NOT"
 
+    # Delimitadores usados na estrutura dos comandos.
     LEFT_PAREN = "LEFT_PAREN"
     RIGHT_PAREN = "RIGHT_PAREN"
     LEFT_BRACE = "LEFT_BRACE"
@@ -89,6 +93,7 @@ class Lexer:
         self.column = 1
 
     def scan_tokens(self) -> list[Token]:
+        # Varre todo o texto e adiciona EOF para o parser saber onde parar.
         while not self._is_at_end():
             self._scan_token()
 
@@ -109,6 +114,7 @@ class Lexer:
             return
 
         if char == "/" and self._match("/"):
+            # Comentarios de linha nao viram token; eles so orientam quem le o codigo.
             self._skip_comment()
             return
 
@@ -121,6 +127,7 @@ class Lexer:
             return
 
         if char == "=":
+            # Alguns operadores dependem do proximo caractere: = ou ==.
             token_type = TokenType.EQUAL if self._match("=") else TokenType.ASSIGN
             lexeme = "==" if token_type == TokenType.EQUAL else "="
             self._add_token(token_type, lexeme, start_line, start_column)
@@ -199,6 +206,7 @@ class Lexer:
         while self._peek().isalnum() or self._peek() == "_":
             lexeme += self._advance()
 
+        # Um mesmo padrao de texto pode ser nome de variavel ou palavra reservada.
         token_type = KEYWORDS.get(lexeme, TokenType.IDENTIFIER)
         self._add_token(token_type, lexeme, line, column)
 
