@@ -1,0 +1,887 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R 11 0 R 13 0 R] /Count 6 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 2474 >>
+stream
+BT
+/F2 18 Tf
+1 0 0 1 56 790 Tm
+(Relatorio Final do Compilador) Tj
+/F1 11 Tf
+1 0 0 1 56 767 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 752 Tm
+(1. Objetivo) Tj
+/F1 11 Tf
+1 0 0 1 56 732 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 717 Tm
+(O objetivo do projeto foi desenvolver um compilador didatico para uma linguagem simples,) Tj
+/F1 11 Tf
+1 0 0 1 56 702 Tm
+(parecida com C, aplicando as principais etapas estudadas em teoria de linguagens formais) Tj
+/F1 11 Tf
+1 0 0 1 56 687 Tm
+(e compiladores.) Tj
+/F1 11 Tf
+1 0 0 1 56 672 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 657 Tm
+(O compilador foi implementado em Python e cobre as seguintes fases:) Tj
+/F1 11 Tf
+1 0 0 1 56 642 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 627 Tm
+(1. analise lexica;) Tj
+/F1 11 Tf
+1 0 0 1 56 612 Tm
+(2. analise sintatica com geracao de AST;) Tj
+/F1 11 Tf
+1 0 0 1 56 597 Tm
+(3. analise semantica;) Tj
+/F1 11 Tf
+1 0 0 1 56 582 Tm
+(4. otimizacao simples;) Tj
+/F1 11 Tf
+1 0 0 1 56 567 Tm
+(5. geracao de codigo intermediario;) Tj
+/F1 11 Tf
+1 0 0 1 56 552 Tm
+(6. geracao de Assembly MIPS.) Tj
+/F1 11 Tf
+1 0 0 1 56 537 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 522 Tm
+(2. Linguagem Implementada) Tj
+/F1 11 Tf
+1 0 0 1 56 502 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 487 Tm
+(A linguagem aceita declaracoes, atribuicoes, estruturas condicionais, lacos e comandos) Tj
+/F1 11 Tf
+1 0 0 1 56 472 Tm
+(simples de entrada e saida.) Tj
+/F1 11 Tf
+1 0 0 1 56 457 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 442 Tm
+(Exemplo:) Tj
+/F1 11 Tf
+1 0 0 1 56 427 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 412 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 397 Tm
+(int x;) Tj
+/F1 11 Tf
+1 0 0 1 56 382 Tm
+(bool positivo;) Tj
+/F1 11 Tf
+1 0 0 1 56 367 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 352 Tm
+(x = read\(\);) Tj
+/F1 11 Tf
+1 0 0 1 56 337 Tm
+(positivo = x > 0;) Tj
+/F1 11 Tf
+1 0 0 1 56 322 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 307 Tm
+(if \(positivo\) {) Tj
+/F1 11 Tf
+1 0 0 1 56 292 Tm
+(print\(x\);) Tj
+/F1 11 Tf
+1 0 0 1 56 277 Tm
+(} else {) Tj
+/F1 11 Tf
+1 0 0 1 56 262 Tm
+(print\(0\);) Tj
+/F1 11 Tf
+1 0 0 1 56 247 Tm
+(}) Tj
+/F1 11 Tf
+1 0 0 1 56 232 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 217 Tm
+(while \(x > 0\) {) Tj
+/F1 11 Tf
+1 0 0 1 56 202 Tm
+(x = x - 1;) Tj
+/F1 11 Tf
+1 0 0 1 56 187 Tm
+(}) Tj
+/F1 11 Tf
+1 0 0 1 56 172 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 157 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 142 Tm
+(Os tipos principais sao:) Tj
+/F1 11 Tf
+1 0 0 1 56 127 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 112 Tm
+(- `int`) Tj
+/F1 11 Tf
+1 0 0 1 56 97 Tm
+(- `bool`) Tj
+/F1 11 Tf
+1 0 0 1 56 82 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 67 Tm
+(Tambem existem literais de string, usados principalmente com print.) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 6 0 R >>
+endobj
+6 0 obj
+<< /Length 2610 >>
+stream
+BT
+/F1 11 Tf
+1 0 0 1 56 790 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 775 Tm
+(3. Analise Lexica) Tj
+/F1 11 Tf
+1 0 0 1 56 755 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 740 Tm
+(A analise lexica transforma o codigo fonte em uma sequencia de tokens.) Tj
+/F1 11 Tf
+1 0 0 1 56 725 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 710 Tm
+(O scanner reconhece:) Tj
+/F1 11 Tf
+1 0 0 1 56 695 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 680 Tm
+(- palavras reservadas;) Tj
+/F1 11 Tf
+1 0 0 1 56 665 Tm
+(- identificadores;) Tj
+/F1 11 Tf
+1 0 0 1 56 650 Tm
+(- numeros inteiros;) Tj
+/F1 11 Tf
+1 0 0 1 56 635 Tm
+(- strings;) Tj
+/F1 11 Tf
+1 0 0 1 56 620 Tm
+(- operadores aritmeticos;) Tj
+/F1 11 Tf
+1 0 0 1 56 605 Tm
+(- operadores relacionais;) Tj
+/F1 11 Tf
+1 0 0 1 56 590 Tm
+(- operadores logicos;) Tj
+/F1 11 Tf
+1 0 0 1 56 575 Tm
+(- delimitadores como parenteses, chaves e ponto e virgula;) Tj
+/F1 11 Tf
+1 0 0 1 56 560 Tm
+(- comentarios de linha com `//`.) Tj
+/F1 11 Tf
+1 0 0 1 56 545 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 530 Tm
+(Essa etapa esta implementada em:) Tj
+/F1 11 Tf
+1 0 0 1 56 515 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 500 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 485 Tm
+(compiler/lexer.py) Tj
+/F1 11 Tf
+1 0 0 1 56 470 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 455 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 440 Tm
+(Quando encontra um caractere invalido, o scanner informa linha e coluna do erro.) Tj
+/F1 11 Tf
+1 0 0 1 56 425 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 410 Tm
+(4. Analise Sintatica) Tj
+/F1 11 Tf
+1 0 0 1 56 390 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 375 Tm
+(A analise sintatica usa um parser descendente recursivo. A escolha desse metodo foi) Tj
+/F1 11 Tf
+1 0 0 1 56 360 Tm
+(feita por ser mais simples de implementar e de explicar em um projeto didatico.) Tj
+/F1 11 Tf
+1 0 0 1 56 345 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 330 Tm
+(O parser verifica se a ordem dos tokens segue a gramatica da linguagem e monta uma AST.) Tj
+/F1 11 Tf
+1 0 0 1 56 315 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 300 Tm
+(Arquivos principais:) Tj
+/F1 11 Tf
+1 0 0 1 56 285 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 270 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 255 Tm
+(compiler/parser.py) Tj
+/F1 11 Tf
+1 0 0 1 56 240 Tm
+(compiler/ast_nodes.py) Tj
+/F1 11 Tf
+1 0 0 1 56 225 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 210 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 195 Tm
+(Exemplos de nos da AST:) Tj
+/F1 11 Tf
+1 0 0 1 56 180 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 165 Tm
+(- `Program`) Tj
+/F1 11 Tf
+1 0 0 1 56 150 Tm
+(- `VarDeclaration`) Tj
+/F1 11 Tf
+1 0 0 1 56 135 Tm
+(- `Assignment`) Tj
+/F1 11 Tf
+1 0 0 1 56 120 Tm
+(- `IfStatement`) Tj
+/F1 11 Tf
+1 0 0 1 56 105 Tm
+(- `WhileStatement`) Tj
+/F1 11 Tf
+1 0 0 1 56 90 Tm
+(- `PrintStatement`) Tj
+/F1 11 Tf
+1 0 0 1 56 75 Tm
+(- `BinaryExpression`) Tj
+/F1 11 Tf
+1 0 0 1 56 60 Tm
+(- `Literal`) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 2688 >>
+stream
+BT
+/F1 11 Tf
+1 0 0 1 56 790 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 775 Tm
+(5. Analise Semantica) Tj
+/F1 11 Tf
+1 0 0 1 56 755 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 740 Tm
+(A analise semantica verifica regras que nao dependem apenas da forma do programa.) Tj
+/F1 11 Tf
+1 0 0 1 56 725 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 710 Tm
+(Foram implementadas as seguintes verificacoes:) Tj
+/F1 11 Tf
+1 0 0 1 56 695 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 680 Tm
+(- variavel precisa ser declarada antes do uso;) Tj
+/F1 11 Tf
+1 0 0 1 56 665 Tm
+(- nao pode haver variavel repetida em escopos visiveis;) Tj
+/F1 11 Tf
+1 0 0 1 56 650 Tm
+(- nomes internos usados pelo compilador sao reservados;) Tj
+/F1 11 Tf
+1 0 0 1 56 635 Tm
+(- atribuicoes precisam respeitar o tipo declarado;) Tj
+/F1 11 Tf
+1 0 0 1 56 620 Tm
+(- condicoes de `if` e `while` precisam ser booleanas;) Tj
+/F1 11 Tf
+1 0 0 1 56 605 Tm
+(- operadores aritmeticos trabalham com `int`;) Tj
+/F1 11 Tf
+1 0 0 1 56 590 Tm
+(- operadores logicos trabalham com `bool`;) Tj
+/F1 11 Tf
+1 0 0 1 56 575 Tm
+(- `read\(\)` retorna `int`.) Tj
+/F1 11 Tf
+1 0 0 1 56 560 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 545 Tm
+(Arquivo principal:) Tj
+/F1 11 Tf
+1 0 0 1 56 530 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 515 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 500 Tm
+(compiler/semantic.py) Tj
+/F1 11 Tf
+1 0 0 1 56 485 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 470 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 455 Tm
+(A tabela de simbolos foi implementada com uma pilha de escopos, permitindo tratar blocos) Tj
+/F1 11 Tf
+1 0 0 1 56 440 Tm
+(criados com { e }.) Tj
+/F1 11 Tf
+1 0 0 1 56 425 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 410 Tm
+(6. Otimizacao) Tj
+/F1 11 Tf
+1 0 0 1 56 390 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 375 Tm
+(Foi implementada uma otimizacao simples antes da geracao de codigo intermediario.) Tj
+/F1 11 Tf
+1 0 0 1 56 360 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 345 Tm
+(As otimizacoes principais sao:) Tj
+/F1 11 Tf
+1 0 0 1 56 330 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 315 Tm
+(- simplificacao de expressoes constantes;) Tj
+/F1 11 Tf
+1 0 0 1 56 300 Tm
+(- simplificacao de `if` com condicao constante;) Tj
+/F1 11 Tf
+1 0 0 1 56 285 Tm
+(- remocao de `while \(false\)`.) Tj
+/F1 11 Tf
+1 0 0 1 56 270 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 255 Tm
+(Exemplo:) Tj
+/F1 11 Tf
+1 0 0 1 56 240 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 225 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 210 Tm
+(int x;) Tj
+/F1 11 Tf
+1 0 0 1 56 195 Tm
+(x = 2 + 3 * 4;) Tj
+/F1 11 Tf
+1 0 0 1 56 180 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 165 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 150 Tm
+(Depois da otimizacao, a expressao passa a ser equivalente a:) Tj
+/F1 11 Tf
+1 0 0 1 56 135 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 120 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 105 Tm
+(x = 14;) Tj
+/F1 11 Tf
+1 0 0 1 56 90 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 75 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 60 Tm
+(Arquivo principal:) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 2392 >>
+stream
+BT
+/F1 11 Tf
+1 0 0 1 56 790 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 775 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 760 Tm
+(compiler/optimizer.py) Tj
+/F1 11 Tf
+1 0 0 1 56 745 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 730 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 715 Tm
+(7. Codigo Intermediario) Tj
+/F1 11 Tf
+1 0 0 1 56 695 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 680 Tm
+(Depois da analise semantica e da otimizacao, o compilador gera Codigo de Tres Enderecos.) Tj
+/F1 11 Tf
+1 0 0 1 56 665 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 650 Tm
+(Exemplo:) Tj
+/F1 11 Tf
+1 0 0 1 56 635 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 620 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 605 Tm
+(declare int x) Tj
+/F1 11 Tf
+1 0 0 1 56 590 Tm
+(t1 = read) Tj
+/F1 11 Tf
+1 0 0 1 56 575 Tm
+(x = t1) Tj
+/F1 11 Tf
+1 0 0 1 56 560 Tm
+(t2 = x > 0) Tj
+/F1 11 Tf
+1 0 0 1 56 545 Tm
+(ifFalse t2 goto L1) Tj
+/F1 11 Tf
+1 0 0 1 56 530 Tm
+(print x) Tj
+/F1 11 Tf
+1 0 0 1 56 515 Tm
+(L1:) Tj
+/F1 11 Tf
+1 0 0 1 56 500 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 485 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 470 Tm
+(Essa representacao facilita a traducao para Assembly MIPS, pois divide expressoes) Tj
+/F1 11 Tf
+1 0 0 1 56 455 Tm
+(grandes em instrucoes menores.) Tj
+/F1 11 Tf
+1 0 0 1 56 440 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 425 Tm
+(Arquivo principal:) Tj
+/F1 11 Tf
+1 0 0 1 56 410 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 395 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 380 Tm
+(compiler/ir.py) Tj
+/F1 11 Tf
+1 0 0 1 56 365 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 350 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 335 Tm
+(8. Geracao de Assembly MIPS) Tj
+/F1 11 Tf
+1 0 0 1 56 315 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 300 Tm
+(A etapa final traduz o codigo intermediario para Assembly MIPS.) Tj
+/F1 11 Tf
+1 0 0 1 56 285 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 270 Tm
+(O codigo gerado usa:) Tj
+/F1 11 Tf
+1 0 0 1 56 255 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 240 Tm
+(- `.data` para variaveis, temporarios e strings;) Tj
+/F1 11 Tf
+1 0 0 1 56 225 Tm
+(- `.text` para instrucoes;) Tj
+/F1 11 Tf
+1 0 0 1 56 210 Tm
+(- `syscall 5` para leitura de inteiro;) Tj
+/F1 11 Tf
+1 0 0 1 56 195 Tm
+(- `syscall 1` para impressao de inteiro;) Tj
+/F1 11 Tf
+1 0 0 1 56 180 Tm
+(- `syscall 4` para impressao de string;) Tj
+/F1 11 Tf
+1 0 0 1 56 165 Tm
+(- `syscall 10` para encerrar o programa.) Tj
+/F1 11 Tf
+1 0 0 1 56 150 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 135 Tm
+(Arquivo principal:) Tj
+/F1 11 Tf
+1 0 0 1 56 120 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 105 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 90 Tm
+(compiler/mips.py) Tj
+/F1 11 Tf
+1 0 0 1 56 75 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 60 Tm
+() Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 2441 >>
+stream
+BT
+/F1 11 Tf
+1 0 0 1 56 790 Tm
+(O Assembly pode ser impresso no terminal ou salvo em um arquivo .asm.) Tj
+/F1 11 Tf
+1 0 0 1 56 775 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 760 Tm
+(9. Como Executar) Tj
+/F1 11 Tf
+1 0 0 1 56 740 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 725 Tm
+(Executar o compilador imprimindo a saida no terminal:) Tj
+/F1 11 Tf
+1 0 0 1 56 710 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 695 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 680 Tm
+(python main.py exemplos/exemplo_basico.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 665 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 650 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 635 Tm
+(Salvar o Assembly em arquivo:) Tj
+/F1 11 Tf
+1 0 0 1 56 620 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 605 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 590 Tm
+(python main.py exemplos/exemplo_basico.hc saida.asm) Tj
+/F1 11 Tf
+1 0 0 1 56 575 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 560 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 545 Tm
+(10. Testes) Tj
+/F1 11 Tf
+1 0 0 1 56 525 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 510 Tm
+(O projeto possui um script simples de testes:) Tj
+/F1 11 Tf
+1 0 0 1 56 495 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 480 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 465 Tm
+(python tests/run_tests.py) Tj
+/F1 11 Tf
+1 0 0 1 56 450 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 435 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 420 Tm
+(Os testes cobrem:) Tj
+/F1 11 Tf
+1 0 0 1 56 405 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 390 Tm
+(- programas validos;) Tj
+/F1 11 Tf
+1 0 0 1 56 375 Tm
+(- erro sintatico;) Tj
+/F1 11 Tf
+1 0 0 1 56 360 Tm
+(- erro semantico por variavel nao declarada;) Tj
+/F1 11 Tf
+1 0 0 1 56 345 Tm
+(- erro semantico por tipo incorreto;) Tj
+/F1 11 Tf
+1 0 0 1 56 330 Tm
+(- geracao de Assembly MIPS;) Tj
+/F1 11 Tf
+1 0 0 1 56 315 Tm
+(- criacao de arquivo `.asm`;) Tj
+/F1 11 Tf
+1 0 0 1 56 300 Tm
+(- otimizacao de constantes.) Tj
+/F1 11 Tf
+1 0 0 1 56 285 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 270 Tm
+(Exemplos validos:) Tj
+/F1 11 Tf
+1 0 0 1 56 255 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 240 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 225 Tm
+(exemplos/exemplo_basico.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 210 Tm
+(exemplos/strings.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 195 Tm
+(exemplos/otimizacao.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 180 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 165 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 150 Tm
+(Exemplos invalidos:) Tj
+/F1 11 Tf
+1 0 0 1 56 135 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 120 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 105 Tm
+(exemplos/erros/variavel_nao_declarada.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 90 Tm
+(exemplos/erros/tipo_incorreto.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 75 Tm
+(exemplos/erros/sintaxe_sem_ponto_virgula.hc) Tj
+/F1 11 Tf
+1 0 0 1 56 60 Tm
+() Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >> /F2 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >> >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 1590 >>
+stream
+BT
+/F1 11 Tf
+1 0 0 1 56 790 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 775 Tm
+(11. Limitacoes) Tj
+/F1 11 Tf
+1 0 0 1 56 755 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 740 Tm
+(Por ser um compilador didatico, algumas simplificacoes foram adotadas:) Tj
+/F1 11 Tf
+1 0 0 1 56 725 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 710 Tm
+(- nao existe funcao definida pelo usuario;) Tj
+/F1 11 Tf
+1 0 0 1 56 695 Tm
+(- nao existe vetor;) Tj
+/F1 11 Tf
+1 0 0 1 56 680 Tm
+(- nao existe tipo `string` para variaveis;) Tj
+/F1 11 Tf
+1 0 0 1 56 665 Tm
+(- a geracao MIPS usa pseudo-instrucoes comuns em simuladores como MARS e SPIM;) Tj
+/F1 11 Tf
+1 0 0 1 56 650 Tm
+(- a otimizacao e simples e nao cobre todos os casos possiveis.) Tj
+/F1 11 Tf
+1 0 0 1 56 635 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 620 Tm
+(Mesmo com essas limitacoes, o projeto passa por todas as etapas principais de um) Tj
+/F1 11 Tf
+1 0 0 1 56 605 Tm
+(compilador completo em escala reduzida.) Tj
+/F1 11 Tf
+1 0 0 1 56 590 Tm
+() Tj
+/F2 14 Tf
+1 0 0 1 56 575 Tm
+(12. Conclusao) Tj
+/F1 11 Tf
+1 0 0 1 56 555 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 540 Tm
+(O projeto implementa um fluxo completo de compilacao: o codigo fonte e lido,) Tj
+/F1 11 Tf
+1 0 0 1 56 525 Tm
+(transformado em tokens, organizado em AST, verificado semanticamente, otimizado,) Tj
+/F1 11 Tf
+1 0 0 1 56 510 Tm
+(convertido para codigo intermediario e traduzido para Assembly MIPS.) Tj
+/F1 11 Tf
+1 0 0 1 56 495 Tm
+() Tj
+/F1 11 Tf
+1 0 0 1 56 480 Tm
+(Com isso, o trabalho demonstra na pratica a ligacao entre os conceitos teoricos de) Tj
+/F1 11 Tf
+1 0 0 1 56 465 Tm
+(linguagens formais, automatos, gramatica, semantica e geracao de codigo.) Tj
+ET
+endstream
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000147 00000 n 
+0000000386 00000 n 
+0000002912 00000 n 
+0000003151 00000 n 
+0000005813 00000 n 
+0000006052 00000 n 
+0000008792 00000 n 
+0000009032 00000 n 
+0000011477 00000 n 
+0000011718 00000 n 
+0000014212 00000 n 
+0000014453 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+16096
+%%EOF
