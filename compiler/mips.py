@@ -8,16 +8,19 @@ class MIPSGenerator:
         self.instructions = instructions
         self.lines: list[str] = []
         self.variables: set[str] = set()
+        self.storage_labels: dict[str, str] = {}
         self.string_literals: dict[str, str] = {}
         self.string_count = 0
 
     def generate(self) -> str:
+        # Primeiro descobre dados necessarios; depois emite .data e .text.
         self._collect_storage()
         self._emit_data_section()
         self._emit_text_section()
         return "\n".join(self.lines)
 
     def _collect_storage(self) -> None:
+        # Variaveis, temporarios e strings precisam existir antes das instrucoes.
         for instruction in self.instructions:
             if instruction.operation == "declare" and instruction.result is not None:
                 self.variables.add(instruction.result)
@@ -29,17 +32,19 @@ class MIPSGenerator:
                 self._string_label(instruction.arg1)
 
     def _emit_data_section(self) -> None:
+        # A secao .data reserva memoria para variaveis e literais de texto.
         self.lines.append(".data")
         self.lines.append('newline: .asciiz "\\n"')
 
         for name in sorted(self.variables):
-            self.lines.append(f"{name}: .word 0")
+            self.lines.append(f"{self._storage_label(name)}: .word 0")
 
         for value, label in self.string_literals.items():
             text = value[1:-1]
             self.lines.append(f'{label}: .asciiz "{text}"')
 
     def _emit_text_section(self) -> None:
+        # A secao .text contem o ponto de entrada e as instrucoes executaveis.
         self.lines.append("")
         self.lines.append(".text")
         self.lines.append(".globl main")
@@ -74,6 +79,7 @@ class MIPSGenerator:
             return
 
         if instruction.operation == "read":
+            # Syscall 5 le um inteiro e devolve o valor em $v0.
             self.lines.append("    li $v0, 5")
             self.lines.append("    syscall")
             self._store_value("$v0", instruction.result)
@@ -93,11 +99,13 @@ class MIPSGenerator:
 
     def _emit_print(self, value: str | None) -> None:
         if self._is_string(value):
+            # Syscall 4 imprime string apontada por $a0.
             label = self._string_label(value)
             self.lines.append(f"    la $a0, {label}")
             self.lines.append("    li $v0, 4")
             self.lines.append("    syscall")
         else:
+            # Syscall 1 imprime inteiro carregado em $a0.
             self._load_value(value, "$a0")
             self.lines.append("    li $v0, 1")
             self.lines.append("    syscall")
@@ -170,11 +178,11 @@ class MIPSGenerator:
             self.lines.append(f"    li {register}, {value}")
             return
 
-        self.lines.append(f"    lw {register}, {value}")
+        self.lines.append(f"    lw {register}, {self._storage_label(value)}")
 
     def _store_value(self, register: str, name: str | None) -> None:
         if name is not None:
-            self.lines.append(f"    sw {register}, {name}")
+            self.lines.append(f"    sw {register}, {self._storage_label(name)}")
 
     def _split_binary_operation(self, operation: str | None) -> tuple[str, str]:
         if operation is None:
@@ -192,6 +200,13 @@ class MIPSGenerator:
             self.string_literals[value] = f"str_{self.string_count}"
 
         return self.string_literals[value]
+
+    def _storage_label(self, name: str) -> str:
+        if name not in self.storage_labels:
+            # Prefixo usado para evitar colisao com mnemonicos e labels internos do MIPS.
+            self.storage_labels[name] = f"var_{name}"
+
+        return self.storage_labels[name]
 
     def _is_string(self, value: str | None) -> bool:
         return value is not None and len(value) >= 2 and value[0] == '"' and value[-1] == '"'

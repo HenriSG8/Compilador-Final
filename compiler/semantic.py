@@ -21,6 +21,7 @@ RESERVED_INTERNAL_NAMES = {"main", "newline"}
 
 
 def is_internal_name(name: str) -> bool:
+    # Esses nomes sao emitidos pelo gerador MIPS e nao devem ser usados pelo usuario.
     if name in RESERVED_INTERNAL_NAMES:
         return True
 
@@ -35,6 +36,7 @@ def is_internal_name(name: str) -> bool:
 
 class SymbolTable:
     def __init__(self) -> None:
+        # Pilha de escopos: cada bloco adiciona uma tabela temporaria.
         self.scopes: list[dict[str, str]] = [{}]
 
     def begin_scope(self) -> None:
@@ -51,11 +53,13 @@ class SymbolTable:
 
         for scope in reversed(self.scopes):
             if name in scope:
+                # O projeto usa regra simples: nao permite redeclarar nem em bloco interno.
                 raise SemanticError(f"variavel '{name}' ja foi declarada")
 
         current_scope[name] = var_type
 
     def get(self, name: str) -> str:
+        # Busca do escopo mais interno para o mais externo.
         for scope in reversed(self.scopes):
             if name in scope:
                 return scope[name]
@@ -134,6 +138,7 @@ class SemanticAnalyzer:
             return self.symbols.get(expression.name)
 
         if isinstance(expression, ReadExpression):
+            # read() usa syscall de leitura inteira no MIPS, entao seu tipo e int.
             return "int"
 
         if isinstance(expression, UnaryExpression):
@@ -160,6 +165,7 @@ class SemanticAnalyzer:
         operator = expression.operator
 
         if operator in {"+", "-", "*", "/"}:
+            # Operacoes aritmeticas aceitam apenas inteiros.
             if left_type == "int" and right_type == "int":
                 return "int"
 

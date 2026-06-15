@@ -20,6 +20,7 @@ from compiler.ast_nodes import (
 
 @dataclass(frozen=True)
 class TACInstruction:
+    # Representa uma instrucao de tres enderecos usada antes do Assembly final.
     operation: str
     arg1: str | None = None
     arg2: str | None = None
@@ -59,6 +60,7 @@ class TACInstruction:
 class IRGenerator:
     def __init__(self) -> None:
         self.instructions: list[TACInstruction] = []
+        # Temporarios guardam resultados intermediarios; labels controlam saltos.
         self.temp_count = 0
         self.label_count = 0
 
@@ -137,6 +139,7 @@ class IRGenerator:
             return expression.name
 
         if isinstance(expression, ReadExpression):
+            # A leitura vai para um temporario para manter o formato de tres enderecos.
             temp = self._new_temp()
             self.instructions.append(TACInstruction("read", result=temp))
             return temp
@@ -153,6 +156,7 @@ class IRGenerator:
             left = self._generate_expression(expression.left)
             right = self._generate_expression(expression.right)
             temp = self._new_temp()
+            # O operador e o operando direito ficam juntos para simplificar a traducao.
             operation = f"{expression.operator} {right}"
             self.instructions.append(TACInstruction("binary", left, operation, temp))
             return temp

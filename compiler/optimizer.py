@@ -18,6 +18,7 @@ from compiler.ast_nodes import (
 
 class Optimizer:
     def optimize(self, program: Program) -> Program:
+        # Otimizacao local: troca expressoes constantes pelo resultado ja calculado.
         declarations = []
 
         for declaration in program.declarations:
@@ -71,6 +72,7 @@ class Optimizer:
                 else_branch = self._optimize_statement(statement.else_branch)
 
             if self._is_bool_literal(condition):
+                # Condicao constante permite remover o ramo que nunca sera executado.
                 return then_branch if condition.value else else_branch
 
             return IfStatement(condition, then_branch, else_branch)
@@ -80,6 +82,7 @@ class Optimizer:
             body = self._optimize_statement(statement.body)
 
             if self._is_bool_literal(condition) and condition.value is False:
+                # while(false) nao executa, entao pode desaparecer do programa.
                 return None
 
             return WhileStatement(condition, body)
@@ -126,6 +129,7 @@ class Optimizer:
             if operator == "*":
                 return Literal(left.value * right.value, "int")
             if operator == "/" and right.value != 0:
+                # Divisao por zero nao e dobrada para preservar o comportamento em execucao.
                 return Literal(left.value // right.value, "int")
             if operator == "<":
                 return Literal(left.value < right.value, "bool")

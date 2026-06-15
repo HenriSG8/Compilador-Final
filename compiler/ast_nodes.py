@@ -4,11 +4,13 @@ from dataclasses import dataclass
 from typing import Any
 
 
+# A AST guarda a estrutura do programa depois da analise sintatica.
 @dataclass(frozen=True)
 class Program:
     declarations: list[Any]
 
 
+# Declaracoes e comandos aparecem no corpo principal ou dentro de blocos.
 @dataclass(frozen=True)
 class VarDeclaration:
     var_type: str
@@ -44,6 +46,7 @@ class PrintStatement:
     value: Any
 
 
+# Expressoes produzem valores e podem ser usadas em atribuicoes, condicoes e prints.
 @dataclass(frozen=True)
 class BinaryExpression:
     left: Any

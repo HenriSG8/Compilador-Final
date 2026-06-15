@@ -27,6 +27,7 @@ def main() -> int:
     source_code = source_path.read_text(encoding="utf-8")
 
     try:
+        # Pipeline principal: texto fonte -> tokens -> AST -> verificacao -> IR -> MIPS.
         tokens = tokenize(source_code)
         program = parse(tokens)
         analyze(program)
@@ -51,6 +52,7 @@ def main() -> int:
 
     if output_path is not None:
         try:
+            # A geracao sempre acontece antes; salvar em arquivo e uma etapa opcional.
             output_path.write_text(mips_code, encoding="utf-8")
         except OSError as error:
             print()
